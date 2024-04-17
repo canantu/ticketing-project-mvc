@@ -2,7 +2,7 @@ package com.cydeo.enums;
 
 public enum Status {
 
-    OPEN("Open"), IN_PROGRESS("In_Progress"), COMPLETED("Completed");
+    OPEN("Open"), IN_PROGRESS("In Progress"), COMPLETED("Completed");
 
     private final String value;
 
