@@ -51,14 +51,25 @@ public class TaskController {
 
         model.addAttribute("task", taskService.findById(id));
         model.addAttribute("projects", projectService.findAll() );
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findEmployees());
         model.addAttribute("tasks", taskService.findAll());
         return "/task/update";
     }
 
-    @PostMapping("/update")
-    public String updateTask(@ModelAttribute TaskDTO task){
+    /*
+    @PostMapping("/update/{taskId}")
+    public String updateTask(@PathVariable("taskId") Long taskId, TaskDTO task){
 
+        task.setId(taskId);
+        taskService.update(task);
+        return "redirect:/task/create";
+    }
+
+     */
+
+    // if path variable is passed with the correct variable, no need to write it explicitly in parameters, Spring does it implicitly
+    @PostMapping("/update/{id}")
+    public String updateTask(TaskDTO task){
         taskService.update(task);
         return "redirect:/task/create";
     }
